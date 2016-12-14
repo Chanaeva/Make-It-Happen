@@ -45,9 +45,16 @@ router.post('/', function(req, res, next) {
     res.render('list_id', {
       name: list.name
     });
-
   });
-//
+// posting from form
+router.post('/new', function(req, res, next) {
+  knex('list')
+  .insert(req.body)
+  .then(function(){
+    // res.redirect('/');
+  })
+  console.log(req.body);
+  });
 //
 // router.get('/list', (req, res, next) => {
 //   knex('list')
