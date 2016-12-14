@@ -11,7 +11,6 @@ const env = 'development';
 router.get('/', function(req, res, next) {
   knex('list').select().then(function(lists){
     res.render('index',{lists:lists});
-    console.log(lists);
   });
 });
 
@@ -32,8 +31,10 @@ router.post('/', function(req, res, next) {
 
   router.get('/detail/:id', function(req, res, next){
     knex('list')
-    .where('id',req.params.id);
-    res.render('detail')
+    .where('id',req.params.id)
+    .then(function(task) {
+      res.render('detail', task[0])
+    })
   })
 
   router.get('/', function(req, res, next) {
