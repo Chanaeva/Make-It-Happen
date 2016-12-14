@@ -9,11 +9,13 @@ const env = 'development';
 
 // Gets home page with seed data
 router.get('/', function(req, res, next) {
-    knex('list').select().then(function(lists) {
-        res.render('index', {
-            lists: lists
+    knex('list')
+        .select()
+        .then(function(lists) {
+            res.render('index', {
+                lists: lists
+            });
         });
-    });
 });
 
 // New form to add task
@@ -22,16 +24,23 @@ router.get('/new', function(req, res, next) {
         title: 'stuff'
     });
 });
-//
+
 //  Gets detail view of one task
 router.get('/detail/:id', function(req, res, next) {
+        knex('list')
+            .where('id', req.params.id)
+            .then(function(task) {
+                res.render('detail', task[0])
+            })
+    })
+    // display update page
+router.get('/detail/:id/update', function(req, res, next) {
     knex('list')
         .where('id', req.params.id)
         .then(function(task) {
-            res.render('detail', task[0])
+            res.render('update', task[0])
         })
-})
-
+});
 // creates a new task and renders new task on detail page
 router.post('/new', (req, res, next) => {
     knex('list')
@@ -42,7 +51,25 @@ router.post('/new', (req, res, next) => {
         });
 });
 
+// delete's task when finished and redirects to '/'
+router.delete('/detail/:id', function(req, res, next) {
+    knex('list')
+        .where('id', req.params.id)
+        .del()
+        .then(function() {
+            res.redirect('/');
+        })
+})
 
+// puts edited task on page
+router.put('/detail/:id', function(req, res, next) {
+    knex('list')
+        .where('id', req.params.id)
+        .update(req.body)
+        .then(function() {
+            res.redirect('/detail/' + req.params.id);
+        })
+})
 
 
 module.exports = router;
