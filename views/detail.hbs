@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col s12 m6">
+<div class="container">
+    <div class="col l3">
         <div class="card grey ligthen-1">
             <div class="card-content white-text">
                 <span class="card-title">{{name}}</span>
@@ -12,12 +12,18 @@
                 <li>
                     <p> {{event}} </p>
                 </li>
-            </div>
-            <div class="card-action">
-              <form action="/detail/{{id}}?_method=delete" method="post">
-                <button class="waves-effect waves-light btn" type="submit">YAY! Finished</button>
-               </form>
-              <a href="/detail/{{this.id}}/update"><button class="waves-effect waves-light btn" type="submit">edit</button></a>
+                <div class="col s4">
+                    <div class="card-action">
+                        <form action="/detail/{{id}}?_method=delete" method="post">
+                            <button class="pink waves-effect waves-light btn left" type="submit">YAY! Finished</button>
+                        </form>
+                        <div class="row">
+                        <div class="col s4">
+                            <a href="/detail/{{this.id}}/update"><button class="pink waves-effect waves-light btn" type="submit">Edit</button></a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

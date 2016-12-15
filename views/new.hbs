@@ -1,14 +1,22 @@
-<h1>Create a new list</h1>
-
-
-<form action="/new"  method="post">
-   <label>Name</label>
-    <input type="text" name="name">
-    <label>Time</label>
-    <input type="time" name="time">
-    <label>Event</label>
-    <input type="text" name="event">
-    <label>Date</label>
-    <input type="date" name="date">
-    <button class="waves-effect waves-light btn" type="submit">Add It!</button>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col l6">
+            <br>
+            <div class="row">
+                <h2>Create a new task</h2>
+                <form action="/new" method="post">
+                    <label class="label">Name</label>
+                    <input type="text" name="name">
+                    <label class="label">Time</label>
+                    <input type="time" name="time">
+                    <label class="label">Event</label>
+                    <input type="text" name="event">
+                    <label class="label">Date</label>
+                    <input type="date" name="date">
+                    <button class="pink lighten-1 waves-effect waves-light btn" type="submit">Add It!</button>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

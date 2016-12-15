@@ -3,9 +3,19 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background: white;
+    font-family: 'Shadows Into Light', cursive;
+    text: grey;
+
   }
 
-  main {
+main {
     flex: 1 0 auto;
   }
+
+p {
+  font-size: 4vh;
+}
+
+.label {
+  font-size: 6vh;
+}
